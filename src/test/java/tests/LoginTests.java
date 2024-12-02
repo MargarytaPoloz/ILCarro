@@ -23,7 +23,8 @@ public class LoginTests extends ApplicationManager {
         email = "polozmargaryta" + i + "@gmail.com";
         password = "Password123@";
         new HomePage(getDriver()).clickBtnRegistrationHeader();
-        new RegistrationPage(getDriver()).typeRegistrationForm(user);
+        //new RegistrationPage(getDriver()).typeRegistrationForm(user);
+
 
     }
 
@@ -32,8 +33,7 @@ public class LoginTests extends ApplicationManager {
     public void LoginPositiveTest() {
 
         int i = new Random().nextInt(1000);
-        UserDto user = new UserDto(user.getEmail(), user.getPassword());
-
+        UserDto user = new UserDto("name", "last_name", email, password);
         new HomePage(getDriver()).clickBtnLoginHeader();
         new LoginPage(getDriver()).typeLoginForm(user);
     }

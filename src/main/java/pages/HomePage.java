@@ -18,19 +18,25 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[@href = '/login?url=%2Fsearch']")
     WebElement btnLogin;
     @FindBy(xpath = "//a[@href='/registration?url=%2Fsearch']")
-    WebElement btnRegistration;
+    WebElement btnSignUp;
+
+    public void clickBtnRegistrationHeader() {
+        btnSignUp.click();
+        pause(3);
+
+
+    }
+
+
+
+
+
 
     public void clickBtnLoginHeader() {
         btnLogin.click();
         pause(3);
 
-
     }
 
-    public void clickBtnRegistrationHeader() {
-        btnRegistration.click();
-        pause(3);
 
-
-    }
 }

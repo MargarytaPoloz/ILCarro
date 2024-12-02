@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class BasePage {
     static WebDriver driver;
@@ -12,11 +13,14 @@ public class BasePage {
 
     public void pause(int time) {
         try {
-            Thread.sleep(1000L);
+            Thread.sleep(time * 1000L);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
 
     }
 
+    public boolean isTextinElementPresent(WebElement element, String text) {
+        return element.getText().contains(text);
+    }
 }
