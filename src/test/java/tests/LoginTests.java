@@ -21,8 +21,6 @@ public class LoginTests extends ApplicationManager {
     @BeforeMethod
     public void goToLoginPage() {
         new HomePage(getDriver()).clickBtnLoginHeader();
-
-
     }
 
     @Test
@@ -35,10 +33,10 @@ public class LoginTests extends ApplicationManager {
         loginPage = new LoginPage(getDriver());
         loginPage.typeLoginForm(user);
         loginPage.clickBtnLogin();
-
-
+        Assert.assertTrue(loginPage.isPopUpLoginMassagePresent("Logged in success"));
     }
-@Test
+
+    @Test
     public void LoginNegativeTest_WrongEmail() {
         UserDtoLombok user = UserDtoLombok.builder()
                 .email("alexmed123gmail.com")
@@ -49,11 +47,10 @@ public class LoginTests extends ApplicationManager {
         loginPage.typeLoginForm(user);
         loginPage.clickBtnLogin();
         Assert.assertTrue(loginPage.validateErrorMassage("It'snot look like email"));
-
-
     }
-@Test
-    public void LoginNegativeTest_EmptyEmail() {
+
+    @Test
+    public void LoginNegativeTest_EmptyPassword() {
         UserDtoLombok user = UserDtoLombok.builder()
                 .email("alexmed123@gmail.com")
                 .password("")
@@ -63,7 +60,5 @@ public class LoginTests extends ApplicationManager {
         loginPage.typeLoginForm(user);
         loginPage.clickBtnLogin();
         Assert.assertTrue(loginPage.validateErrorMassage("Password is required"));
-
-
     }
 }
